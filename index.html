@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CROPSHOP</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav role="navigation" aria-label="Main Navigation">
+        <div class="logo" aria-label="CROPSHOP Logo">CROPSHOP</div>
+        <ul class="nav-links" role="menubar">
+            <li role="menuitem"><a href="#" id="dashboard-link" onclick="showSection('dashboard', this)">Dashboard</a></li>
+            <li role="menuitem"><a href="#" id="marketplace-link" onclick="showSection('marketplace', this)">Marketplace</a></li>
+            <li role="menuitem">
+                <a href="#" id="cart-link" onclick="showSection('cart', this)">
+                    Cart (<span id="cart-count">0</span>)
+                </a>
+            </li>
+            
+        </ul>
+        <button class="profile-btn" aria-label="User Profile">Profile</button>
+    </nav>
+
+    <div class="content">
+         <!-- Offers Container -->
+          <div class="offers-container">
+            <!-- Carousel Section -->
+             <section aria-label="carousel-container">
+                <div id="carousel-section" class="carousel-container">
+                    <div class="carousel">
+                <!-- Carousel Item 1 -->
+                <div class="carousel-item">
+                    <img src="Images/Dashboard imgs/offer1.jpg" alt="marketplace"onclick="showSection('marketplace', this)">
+                    <p>Limited Time Offer: Discount on Selected Item (20% off)</p>
+                </div>
+                <!-- Carousel Item 2 -->
+                <div class="carousel-item">
+                    <img src="Images/Dashboard imgs/bundle1.jpg" alt="Garlic"onclick="showTopTrendProductDetails('Garlic')">
+                    <p>Bundle: Get Garlic & Onion at a special price</p>
+                </div>
+                <!-- Carousel Item 3 -->
+                <div class="carousel-item">
+                    <img src="Images/Dashboard imgs/recommended1.jpg" alt="Corn"onclick="showTopTrendProductDetails('Corn')">
+                    <p>Recommended Crops for November: Corn</p>
+                </div>
+                <!-- Carousel Item 4 -->
+                <div class="carousel-item">
+                    <img src="Images/Dashboard imgs/top-seller1.jpg" alt="Rice"onclick="showTopTrendProductDetails('Rice')">
+                    <p>Top Seller: Rice </p>
+                </div>
+            </div>
+            <!-- Carousel navigation buttons -->
+            <button class="prev-btn" onclick="moveCarousel(-1)" aria-label="Previous Slide">&#10094;</button>
+            <button class="next-btn" onclick="moveCarousel(1)" aria-label="Next Slide">&#10095;</button>
+        </div>
+    </section>
+
+<!-- Top Trends Section -->
+<div class="top-trends-section" id="topTrendsSection">
+    <div class="top-trends-header">
+        <h3>Top Crops</h3>
+        <button class="see-all-trends" onclick="viewAllTrends()"> > </button> <!-- Right arrow -->
+    </div>
+    <div class="trends-grid">
+        <div class="trend-item" onclick="showTopTrendProductDetails('Corn')">
+            <div class="image-container">
+                <img src="Images/Dashboard imgs/image1.jpg" alt="Corn">
+                <div class="overlay-text">Corn</div>
+            </div>
+        </div>
+        <div class="trend-item" onclick="showTopTrendProductDetails('Sugarcane')">
+            <div class="image-container">
+                <img src="Images/Dashboard imgs/image2.jpg" alt="Sugarcane">
+                <div class="overlay-text">Sugarcane</div>
+            </div>
+        </div>
+        <div class="trend-item" onclick="showTopTrendProductDetails('Rice')">
+            <div class="image-container">
+                <img src="Images/Dashboard imgs/image3.jpg" alt="Rice">
+                <div class="overlay-text">Rice</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <!-- Full Products Section (Initially Hidden) -->
+<div class="all-products-section" id="all-products" style="display: none;">
+    <div class="section-header">
+        <h3>Top Crops</h3>
+        <button class="back-button" onclick="goBackToDashboard()"> < </button>
+    </div>
+
+    <div class="trends-grid all-products-view">
+        <!-- All products, including extra ones -->
+        <div class="trend-item" onclick="showTopTrendProductDetails('Corn')">
+            <div class="image-container">
+                <img src="Images/Dashboard imgs/image1.jpg" alt="Corn">
+                <div class="overlay-text">Corn</div>
+            </div>
+        </div>
+
+        <div class="trend-item" onclick="showTopTrendProductDetails('Sugarcane')">
+            <div class="image-container">
+                <img src="Images/Dashboard imgs/image2.jpg" alt="Sugarcane">
+                <div class="overlay-text">Sugarcane</div>
+            </div>
+        </div>
+
+        <div class="trend-item" onclick="showTopTrendProductDetails('Rice')">
+            <div class="image-container">
+                <img src="Images/Dashboard imgs/image3.jpg" alt="Rice">
+                <div class="overlay-text">Rice</div>
+            </div>
+        </div>
+
+        <div class="trend-item" onclick="showTopTrendProductDetails('Tomato')">
+            <div class="image-container">
+                <img src="Images/Dashboard imgs/13.jpg" alt="Tomato">
+                <div class="overlay-text">Tomato</div>
+            </div>
+        </div>
+
+        <div class="trend-item" onclick="showTopTrendProductDetails('Potato')">
+            <div class="image-container">
+                <img src="Images/Dashboard imgs/3.jpg" alt="Potato">
+                <div class="overlay-text">Potato</div>
+            </div>
+        </div>
+
+        <div class="trend-item" onclick="showTopTrendProductDetails('Mango')">
+            <div class="image-container">
+                <img src="Images/Dashboard imgs/18.jpg" alt="Mango">
+                <div class="overlay-text">Mango</div>
+            </div>
+        </div>
+        
+        <div class="trend-item" onclick="showTopTrendProductDetails('Calamansi')">
+            <div class="image-container">
+                <img src="Images/Dashboard imgs/19.jpg" alt="Calamansi">
+                <div class="overlay-text">Calamansi</div>
+            </div>
+        </div>
+
+        <div class="trend-item" onclick="showTopTrendProductDetails('Banana')">
+            <div class="image-container">
+                <img src="Images/Dashboard imgs/16.jpg" alt="Banana">
+                <div class="overlay-text">Banana</div>
+            </div>
+        </div>
+
+        <div class="trend-item" onclick="showTopTrendProductDetails('Ginger')">
+            <div class="image-container">
+                <img src="Images/Dashboard imgs/6.jpg" alt="Ginger">
+                <div class="overlay-text">Ginger</div>
+            </div>
+        </div>
+        <!-- Add more products here as needed -->
+    </div>
+</div>           
+            </section>
+        </div>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="dashboard-box">
+            <h3>CROPS PRICE PER KILO</h3>
+            <canvas id="salesChart" width="420" height="180"></canvas>
+        </section>
+
+
+        <!-- Marketplace Section -->
+        <div class="dashboard-box" id="marketplace" style="display: none;">
+            <!-- Search and Filter Bar -->
+            <div class="search-filter-bar">
+                <input type="text" id="search-bar" placeholder="Search">
+                <button class="filter-btn active" onclick="filterProducts('All', event)">All</button>
+                <button class="filter-btn" onclick="filterProducts('Crops', event)">Crops</button>
+                <button class="filter-btn" onclick="filterProducts('Seeds', event)">Seeds</button>
+                <button class="filter-btn" onclick="filterProducts('Fertilizers', event)">Fertilizers</button>
+                <button class="filter-btn" onclick="filterProducts('Tools', event)">Tools</button>
+            </div>
+            
+            
+            <!-- Product Grid -->
+            <div class="product-grid">
+                <div class="product-item" onclick="showProductDetails('Rice')">
+                    <img src="Images/Dashboard imgs/1.jpg" alt="Rice">
+                    <p>Rice</p>
+                    <p>₱44/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Corn')">
+                    <img src="Images/Dashboard imgs/2.jpg" alt="Corn">
+                    <p>Corn</p>
+                    <p>₱46/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Potato')">
+                    <img src="Images/Dashboard imgs/3.jpg" alt="Potato">
+                    <p>Potato</p>
+                    <p>₱48/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Garlic')">
+                    <img src="Images/Dashboard imgs/4.jpg" alt="Garlic">
+                    <p>Garlic</p>
+                    <p>₱50/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Onion')">
+                    <img src="Images/Dashboard imgs/5.jpg" alt="Onion">
+                    <p>Onion</p>
+                    <p>₱60/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Ginger')">
+                    <img src="Images/Dashboard imgs/6.jpg" alt="Ginger">
+                    <p>Ginger</p>
+                    <p>₱70/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Sugarcane')">
+                    <img src="Images/Dashboard imgs/7.jpg" alt="Sugarcane">
+                    <p>Sugarcane</p>
+                    <p>₱65/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Carrot')">
+                    <img src="Images/Dashboard imgs/8.jpg" alt="Carrot">
+                    <p>Carrot</p>
+                    <p>₱60/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Radish')">
+                    <img src="Images/Dashboard imgs/9.jpg" alt="Radish">
+                    <p>Radish</p>
+                    <p>₱55/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Soybeans')">
+                    <img src="Images/Dashboard imgs/10.jpg" alt="Soybeans">
+                    <p>Soybeans</p>
+                    <p>₱44/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Barley')">
+                    <img src="Images/Dashboard imgs/11.jpg" alt="Barley">
+                    <p>Barley</p>
+                    <p>₱46/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Oats')">
+                    <img src="Images/Dashboard imgs/12.jpg" alt="Oats">
+                    <p>Oats</p>
+                    <p>₱48/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Tomato')">
+                    <img src="Images/Dashboard imgs/13.jpg" alt="Tomato">
+                    <p>Tomato</p>
+                    <p>₱50/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Cassava')">
+                    <img src="Images/Dashboard imgs/14.jpg" alt="Cassava">
+                    <p>Cassava</p>
+                    <p>₱60/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Coconut')">
+                    <img src="Images/Dashboard imgs/15.jpg" alt="Coconut">
+                    <p>Coconut</p>
+                    <p>₱70/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Banana')">
+                    <img src="Images/Dashboard imgs/16.jpg" alt="Banana">
+                    <p>Banana</p>
+                    <p>₱65/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Pineapple')">
+                    <img src="Images/Dashboard imgs/17.jpg" alt="Pineapple">
+                    <p>Pineapple</p>
+                    <p>₱60/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Mango')">
+                    <img src="Images/Dashboard imgs/18.jpg" alt="Mango">
+                    <p>Mango</p>
+                    <p>₱55/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Calamansi')">
+                    <img src="Images/Dashboard imgs/19.jpg" alt="Calamansi">
+                    <p>Calamansi</p>
+                    <p>₱60/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Eggplant')">
+                    <img src="Images/Dashboard imgs/20.jpg" alt="Eggplant">
+                    <p>Eggplant</p>
+                    <p>₱55/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Rice seeds')">
+                    <img src="Images/Dashboard imgs/seeds.jpg" alt="Rice seeds">
+                    <p>Rice seeds</p>
+                    <p>₱55 / 250grams</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Corn seeds')">
+                    <img src="Images/Dashboard imgs/seeds2.jpg" alt="Corn seeds">
+                    <p>Corn seeds</p>
+                    <p>₱55 / 250grams</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Sunflower seeds')">
+                <img src="Images/Dashboard imgs/seeds3.jpg" alt="Sunflower seeds">
+                <p>Sunflower seeds</p>
+                <p>₱55 / 250grams</p>
+                </div> 
+                <div class="product-item" onclick="showProductDetails('Tomato seeds')">
+                    <img src="Images/Dashboard imgs/seeds4.jpg" alt="Tomato seeds">
+                    <p>Tomato seeds</p>
+                    <p>₱55 / 250grams</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Lettuce seeds')">
+                    <img src="Images/Dashboard imgs/seeds5.jpg" alt="Lettuce seeds">
+                    <p>Lettuce seeds</p>
+                    <p>₱55 / 250grams</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Carrot seeds')">
+                <img src="Images/Dashboard imgs/seeds6.jpg" alt="Carrot seeds">
+                <p>Carrot seeds</p>
+                <p>₱55 / 250grams</p>
+                </div> 
+                <div class="product-item" onclick="showProductDetails('Cucumber seeds')">
+                    <img src="Images/Dashboard imgs/seeds7.jpg" alt="Cucumber seeds">
+                    <p>Cucumber seeds</p>
+                    <p>₱55 / 250grams</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Pepper seeds')">
+                    <img src="Images/Dashboard imgs/seeds8.jpg" alt="Pepper seeds">
+                    <p>Pepper seeds</p>
+                    <p>₱55 / 250grams</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Pumpkin seeds')">
+                <img src="Images/Dashboard imgs/seeds9.jpg" alt="Pumpkin seeds">
+                <p>Pumpkin seeds</p>
+                <p>₱55 / 250grams</p>
+                </div> 
+                <div class="product-item" onclick="showProductDetails('Barley seeds')">
+                    <img src="Images/Dashboard imgs/seeds10.jpg" alt="Barley seeds">
+                    <p>Barley seeds</p>
+                    <p>₱55 / 250grams</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Canola seeds')">
+                    <img src="Images/Dashboard imgs/seeds11.jpg" alt="Canola seeds">
+                    <p>Canola seeds</p>
+                    <p>₱55 / 250grams</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Pea seeds')">
+                <img src="Images/Dashboard imgs/seeds12.jpg" alt="Pea seeds">
+                <p>Pea seeds</p>
+                <p>₱55 / 250grams</p>
+                </div> 
+                <div class="product-item" onclick="showProductDetails('Sesame seeds')">
+                    <img src="Images/Dashboard imgs/seeds13.jpg" alt="Sesame seeds">
+                    <p>Sesame seeds</p>
+                    <p>₱55 / 250grams</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Broccoli seeds')">
+                    <img src="Images/Dashboard imgs/seeds14.jpg" alt="Broccoli seeds">
+                    <p>Broccoli seeds</p>
+                    <p>₱55 / 250grams</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Okra seeds')">
+                <img src="Images/Dashboard imgs/seeds15.jpg" alt="Okra seeds">
+                <p>Okra seeds</p>
+                <p>₱55 / 250grams</p>
+                </div> 
+                <div class="product-item" onclick="showProductDetails('Cauliflower seeds')">
+                    <img src="Images/Dashboard imgs/seeds16.jpg" alt="Cauliflower seeds">
+                    <p>Cauliflower seeds</p>
+                    <p>₱55 / 250grams</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Turnip seeds')">
+                    <img src="Images/Dashboard imgs/seeds17.jpg" alt="Turnip seeds">
+                    <p>Turnip seeds</p>
+                    <p>₱55 / 250grams</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Melon seeds')">
+                <img src="Images/Dashboard imgs/seeds18.jpg" alt="Melon seeds">
+                <p>Melon seeds</p>
+                <p>₱55 / 250grams</p>
+                </div> 
+                <div class="product-item" onclick="showProductDetails('Squash seeds')">
+                    <img src="Images/Dashboard imgs/seeds19.jpg" alt="Squash seeds">
+                    <p>Squash seeds</p>
+                    <p>₱55 / 250grams</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Papaya seeds')">
+                <img src="Images/Dashboard imgs/seeds20.jpg" alt="Papaya seeds">
+                <p>Papaya seeds</p>
+                <p>₱55 / 250grams</p>
+                </div> 
+
+                <div class="product-item" onclick="showProductDetails('Phosphorus fertilizer')">
+                    <img src="Images/Dashboard imgs/pfertilizers.jpg" alt="Phosphorus fertilizer">
+                    <p>Phosphorus fertilizer</p>
+                    <p>₱55/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Nitrogen fertilizer')">
+                    <img src="Images/Dashboard imgs/nfertilizers.jpg" alt="Nitrogen fertilizer">
+                    <p>Nitrogen fertilizer</p>
+                    <p>₱55/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Potassium fertilizer')">
+                    <img src="Images/Dashboard imgs/kfertilizers.jpg" alt="Potassium fertilize">
+                    <p>Potassium fertilizer</p>
+                    <p>₱55/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Compost fertilizer')">
+                    <img src="Images/Dashboard imgs/fertilizers1.jpg" alt="Compost fertilize">
+                    <p>Compost fertilizer</p>
+                    <p>₱55/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Organic fertilizer')">
+                    <img src="Images/Dashboard imgs/fertilizers2.jpg" alt="Organic fertilize">
+                    <p>Organic fertilizer</p>
+                    <p>₱55/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Inorganic fertilizer')">
+                    <img src="Images/Dashboard imgs/fertilizers3.jpg" alt="Inorganic fertilize">
+                    <p>Inorganic fertilizer</p>
+                    <p>₱55/kilo</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Nitrate fertilizer')">
+                    <img src="Images/Dashboard imgs/fertilizers4.jpg" alt="Nitrate fertilize">
+                    <p>Nitrate fertilizer</p>
+                    <p>₱55/kilo</p>
+                </div>
+                
+                <div class="product-item" onclick="showProductDetails('Trowel')">
+                    <img src="Images/Dashboard imgs/tools1.jpg" alt="Trowel">
+                    <p>Trowel</p>
+                    <p>₱55</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Mini Hand Rake')">
+                    <img src="Images/Dashboard imgs/tools2.jpg" alt="Mini Hand Rake">
+                    <p>Mini Hand Rake</p>
+                    <p>₱55</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Water Sprinkler')">
+                    <img src="Images/Dashboard imgs/tools3.jpg" alt="Water Sprinkler">
+                    <p>Water Sprinkler</p>
+                    <p>₱55</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Gloves')">
+                    <img src="Images/Dashboard imgs/tools4.jpg" alt="Gloves">
+                    <p>Gloves</p>
+                    <p>₱55</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Pruning Shears')">
+                    <img src="Images/Dashboard imgs/tools5.jpg" alt="Pruning Shears">
+                    <p>Pruning Shears</p>
+                    <p>₱55</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Loopers')">
+                    <img src="Images/Dashboard imgs/tools6.jpg" alt="Loopers">
+                    <p>Loopers</p>
+                    <p>₱55</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Spade')">
+                    <img src="Images/Dashboard imgs/tools7.jpg" alt="Spade">
+                    <p>Spade</p>
+                    <p>₱55</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Rake')">
+                    <img src="Images/Dashboard imgs/tools8.jpg" alt="Rake">
+                    <p>Rake</p>
+                    <p>₱55</p>
+                </div>
+                <div class="product-item" onclick="showProductDetails('Hoe')">
+                    <img src="Images/Dashboard imgs/tools9.jpg" alt="Hoe">
+                    <p>Hoe</p>
+                    <p>₱55</p>
+                </div>
+            </div>
+        </div>
+        
+
+<!-- Product Details Section -->
+<div class="dashboard-box" id="product-details" style="display: none;">
+    <div class="product-view">
+        <div class="product-image">
+            <img src="" alt="Product Image" id="product-image"> <!-- Dynamically change src -->
+        </div>
+        <div class="product-info">
+            <h2 id="product-title"></h2> <!-- Product Name -->
+            <p id="product-price"></p> <!-- Product Price -->
+            <p id="product-rating">Ratings: </p> <!-- Product Rating (Stars) -->
+            <p id="product-description"></p> <!-- Product Description -->
+            <div class="button-container"> <!-- Button container -->
+                <button onclick="goBackToMarketplace()" class="back-btn">&#8592; </button> <!-- Simple back button -->
+                <button onclick="addToCart()" class="add-to-cart">Add to Cart</button> <!-- Add to Cart Button -->
+                <button onclick="buyNow()" class="buy-now">Buy Now</button> <!-- Buy Now Button -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cart Section -->
+<div class="dashboard-box" id="cart" style="display: block;">
+    <h2 id="cart-content" style="display: none;">Cart Content</h2>
+    <div id="cart-items" style="display: none;"></div> <!-- Container for cart items -->
+    <p id="empty-cart-message" style="display: none;">Your cart is empty.</p> <!-- Message when the cart is empty -->
+    <button class="profile-btn" id="checkout-btn" style="display: none;" onclick="checkout()">Checkout</button> <!-- Checkout Button -->
+</div>
+
+    
+    <script src="script.js"></script>
+</body>
+</html>
